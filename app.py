@@ -2,8 +2,15 @@ import streamlit as st
 import re
 import pickle
 
-model = pickle.load(open("spam_model.pkl", "rb"))
-vectorizer = pickle.load(open("vectorizer.pkl", "rb"))
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+model_path = os.path.join(BASE_DIR, "spam_model.pkl")
+vectorizer_path = os.path.join(BASE_DIR, "vectorizer.pkl")
+
+model = pickle.load(open(model_path, "rb"))
+vectorizer = pickle.load(open(vectorizer_path, "rb"))
 
 st.title("📧 Spam Email Detector")
 
